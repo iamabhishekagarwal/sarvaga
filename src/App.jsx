@@ -1,12 +1,14 @@
 import React from 'react'
 import Navbar from './components/Navbar'
-
+import Trending from './components/TopProducts/Trending'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 import Hero from './components/hero/Hero'
 import Products from './components/Products/Products'
 import AOS from "aos";
 import "aos/dist/aos.css"
+import Banner from './components/Banner/Banner'
+import Testimonial from './components/Testimonial/Testimonial'
 const App = () => {
   React.useEffect(()=>{
     AOS.init({
@@ -23,9 +25,13 @@ const App = () => {
       <Navbar></Navbar>
       <Hero></Hero>
       <Products></Products>
-      {/* <Signin></Signin>
-      <Signup></Signup> */}
+      <Trending></Trending>
+      <Banner></Banner>
+      <Testimonial></Testimonial>
       
+      {/* <Signin></Signin>
+      <Signup></Signup>
+       */}
       
      
       

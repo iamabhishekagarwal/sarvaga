@@ -69,7 +69,7 @@ const Hero = () => {
                         data-aos="fade-up"
                         data-aos-duration="500"
                         data-aos-delay="300"
-                         className='bg-gradient-to-r from-purple-700 to-purple-900 hover:scale-105 duration-200 text-white py-2 px-4 rounded-full'>
+                        className='bg-gradient-to-r from-purple-700 to-purple-900 hover:scale-105 duration-200 text-white py-2 px-4 rounded-full'>
                             Order now
                         </button>
                     </div>

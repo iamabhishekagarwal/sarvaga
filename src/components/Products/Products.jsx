@@ -2,6 +2,9 @@ import React from 'react'
 import img1 from '../../assets/img1.jpeg'
 import img2 from '../../assets/img2.jpeg'
 import img3 from '../../assets/img3.jpeg'
+import img4 from '../../assets/img4.jpeg'
+import img5 from '../../assets/img5.jpeg'
+
 import {FaStar} from "react-icons/fa6";
 const ProductsData=[
     {
@@ -19,7 +22,7 @@ const ProductsData=[
         title:"women western",
         rating:5.0,
         author:"sumedha",
-        aosDelay:"200",
+        aosDelay:"100",
     },
     {
         id:3,
@@ -27,23 +30,40 @@ const ProductsData=[
         title:"women traditionals",
         rating:5.0,
         author:"aakash",
+        aosDelay:"200",
+    },
+    {
+        id:4,
+        img:img4,
+        title:"women ethnics 1",
+        rating:5.0,
+        author:"dodeja",
+        aosDelay:"300",
+    },
+    {
+        id:5,
+        img:img5,
+        title:"women traditionals 2",
+        rating:5.0,
+        author:"simran",
         aosDelay:"400",
-    }
+    },
+
 
 ]
 const Products = () => {
   return (
-    <div className='mt-14 mb-12'>
-        <div className="container">
+    <div className='mt-14 mb-12 flex justify-center'>
+        <div className="container bg-gray-100 py-5">
         {/* header section */}
         <div className="text-center mb-10 max-w-[600px] mx-auto">
-            <p data-aos="fade-up" className='text-sm text-black'>top selling products for you</p>
-            <h1 data-aos="fade-up" classname="text-3xl font-bold">products</h1>
-            <p data-aos="fade-up" className='text-xs text-gray-400'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, deleniti natus! Voluptate, enim assumenda?</p>
+            <p data-aos="fade-up" className='text-pretty  text-purple-900 py-1 '>Top Selling Products For You</p>
+            <h1 data-aos="fade-up" className="text-lg text-black  font-bold ">Top Selling Products</h1>
+            <p data-aos="fade-up" className='text-xs text-gray-400 mt-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, deleniti natus! Voluptate, enim assumenda?</p>
         </div>
         {/* body section */}
         <div>
-            <div className='grid grid-cols-1 sm:grid-cols-3 md-grid-cols-4 lg-grid-cols-5 place-items-center gap-5'>
+            <div className='grid grid-cols-1 sm:grid-cols-4 md-grid-cols-4 lg-grid-cols-5 place-items-center gap-5'>
                 {/* card sections */}
                 {ProductsData.map((data)=>(
                     <div
@@ -55,7 +75,7 @@ const Products = () => {
                             <h3 className="font-semibold">{data.title}</h3>
                             <p className='text-sm text-gray-600'>{data.author}</p>
                             <div className="flex items-center gap-1">
-                            <FaStar className="text-yellow 400"/>
+                            <FaStar className="text-yellow-400"/>
                             <span>{data.rating}</span>
                             </div>
                         </div>
@@ -64,7 +84,11 @@ const Products = () => {
                 ))}
 
             </div>
-        </div>
+            {/* view all button */}
+            <div className='flex justify-center'>
+            <button class="text-white bg-purple-700 hover:text-[#510F3C] border border-blue-300 rounded-xl w-[200px] hover:w-[250px]  transition-all duration-300 px-4 hover:bg-white py-2">view all Products</button>
+            </div>
+        </div>      
 
 
     </div>

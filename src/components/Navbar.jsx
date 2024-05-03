@@ -1,20 +1,20 @@
 import React from 'react';
-import Logo from '../assets/logo.png';
+import Logo2 from '../assets/logo2.png';
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 
 
-const navbar = () => {
+const Navbar = () => {
 return (
 
 <div>
-<header class="bg-purple-400 bg-opacity-90 ">
+<header class="bg-[#510F3C] bg-opacity-90 ">
 <nav class="flex justify-between items-center">
 <div class="my-3 mx-5 flex gap-2 cursor-pointer ">
 <a href="#">
-    <img src={Logo} alt="Logo" className='w-8'/>
+    <img src={Logo2} alt="Logo2" className='w-[250px] h-[100px]'/>
 </a>    
-<p class="font-bold text-center text-white text-2xl">Sarvaga</p>
+{/* <p class=" text-center text-white text-2xl font-serif">Sarvaga  Fashions</p> */}
 
 </div>
 <div class="flex justify-between items-center gap-6">
@@ -29,7 +29,7 @@ return (
 </div>
 <div>
     <button 
-        onClick={()=> alert("ordering not available yet")} className='bg-gradient-to-r from-purple-300 to-purple-500 transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3 group'>
+className='bg-gradient-to-r from-purple-300 to-purple-500 transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3 group'>
 <span className='group-hover:block hidden transition-all duration-200 '>Order</span>
 <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer"/>
 </button>
@@ -37,8 +37,8 @@ return (
 </div>
 
 <div class=" flex items-center gap-10 -translate-x-8 py-3 px-2 ">
-<button class="text-white border border-blue-300 rounded-xl w-[100px] hover:w-[200px]  transition-all duration-300 px-4 hover:bg-purple-900 py-2">Log in</button>
-<button class="text-white border border-blue-300 rounded-xl w-[100px] hover:w-[200px]  transition-all duration-300 px-4 hover:bg-purple-900 py-2">Sign up</button>
+<button class="text-white hover:text-[#510F3C] border border-blue-300 rounded-xl w-[100px] hover:w-[200px]  transition-all duration-300 px-4 hover:bg-white py-2">Log in</button>
+<button class="text-white hover:text-[#510F3C] border border-blue-300 rounded-xl w-[100px] hover:w-[200px]  transition-all duration-300 px-4 hover:bg-white py-2">Sign up</button>
 </div>
 
 
@@ -55,7 +55,7 @@ return (
 <li ><a href="#"  target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"   >Sarees</a></li>
 <li ><a href="#" target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"   >Salwaar Suits</a></li>
 <li ><a href="#" target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"  > Lehangas</a></li>
-<li ><a href="#"  target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"   >Others</a></li>
+<li ><a href="#"  target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"   >Designers</a></li>
 <li ><a  href="#" target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer" >New Arrivals</a></li>
 
         
@@ -67,4 +67,4 @@ return (
 )
 }
 
-export default navbar
+export default Navbar
