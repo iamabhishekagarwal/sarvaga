@@ -51,12 +51,12 @@ className='bg-gradient-to-r from-purple-300 to-purple-500 transition-all duratio
 </header>
 <div class="flex justify-center bg-purple-200">
 <ul class="flex items-center gap-14 py-4">
-<li><a href="#" target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer" >Sale</a></li>
-<li ><a href="#"  target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"   >Sarees</a></li>
-<li ><a href="#" target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"   >Salwaar Suits</a></li>
-<li ><a href="#" target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"  > Lehangas</a></li>
-<li ><a href="#"  target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"   >Designers</a></li>
-<li ><a  href="#" target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer" >New Arrivals</a></li>
+<li><a href="/sale" target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer" >Sale</a></li>
+<li ><a href="/sarees"  target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"   >Sarees</a></li>
+<li ><a href="/salwaar-suits" target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"   >Salwaar Suits</a></li>
+<li ><a href="/lehangas" target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"  > Lehangas</a></li>
+<li ><a href="/designers"  target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer"   >Designers</a></li>
+<li ><a  href="/newArrivals" target="_blank" class="font-semibold text-purple-800 hover:text-purple-500 cursor-pointer" >New Arrivals</a></li>
 
         
 </ul>
