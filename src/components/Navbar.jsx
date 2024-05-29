@@ -11,7 +11,7 @@ return (
 <header class="bg-[#510F3C] bg-opacity-90 ">
 <nav class="flex justify-between items-center">
 <div class="my-3 mx-5 flex gap-2 cursor-pointer ">
-<a href="#">
+<a href="/home" target="_self">
     <img src={Logo2} alt="Logo2" className='w-[250px] h-[100px]'/>
 </a>    
 {/* <p class=" text-center text-white text-2xl font-serif">Sarvaga  Fashions</p> */}
@@ -37,8 +37,7 @@ className='bg-gradient-to-r from-purple-300 to-purple-500 transition-all duratio
 </div>
 
 <div class=" flex items-center gap-10 -translate-x-8 py-3 px-2 ">
-<button class="text-white hover:text-[#510F3C] border border-blue-300 rounded-xl w-[100px] hover:w-[200px]  transition-all duration-300 px-4 hover:bg-white py-2">Log in</button>
-<button class="text-white hover:text-[#510F3C] border border-blue-300 rounded-xl w-[100px] hover:w-[200px]  transition-all duration-300 px-4 hover:bg-white py-2">Sign up</button>
+<button class="text-white hover:text-[#510F3C] border border-blue-300 rounded-xl w-[100px] hover:w-[200px]  transition-all duration-300 px-4 hover:bg-white py-2">continue with google</button>
 </div>
 
 
