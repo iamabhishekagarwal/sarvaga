@@ -17,6 +17,7 @@ import Lehangas from './pages/Lehangas'
 import Designers from './pages/Designers'
 import Newarrivals from './pages/Newarrivals'
 import Home from './pages/Home'
+import Description from './pages/Description'
 const App = () => {
   React.useEffect(()=>{
     AOS.init({
@@ -32,14 +33,16 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/home' element={<Home></Home>}></Route>
-          <Route path='/signin' element={<Signin></Signin>}></Route>
-          <Route path='/signup' element={<Signup></Signup>}></Route>
-          <Route path='/sale' element={<Sale></Sale>}></Route>
+          {/* <Route path='/signin' element={<Signin></Signin>}></Route>
+          <Route path='/signup' element={<Signup></Signup>}></Route> */}
+          <Route path='/sale' element={<Home></Home>}></Route>
           <Route path='/sarees' element={<Sarees></Sarees>}></Route>
           <Route path='/salwaar-suits' element={<SalwaarSuits></SalwaarSuits>}></Route>
           <Route path='/lehangas' element={<Lehangas></Lehangas>}></Route>
           <Route path='/designers' element={<Designers></Designers>}></Route>
           <Route path='/newArrivals' element={<Newarrivals></Newarrivals>}></Route>
+          <Route path='/description' element={<Description></Description>}></Route>
+          
         </Routes>
       </BrowserRouter>
     </div>

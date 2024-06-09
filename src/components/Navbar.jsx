@@ -37,7 +37,7 @@ className='bg-gradient-to-r from-purple-300 to-purple-500 transition-all duratio
 </div>
 
 <div class=" flex items-center gap-10 -translate-x-8 py-3 px-2 ">
-<button class="text-white hover:text-[#510F3C] border border-blue-300 rounded-xl w-[100px] hover:w-[200px]  transition-all duration-300 px-4 hover:bg-white py-2">continue with google</button>
+<button class="text-white hover:text-[#510F3C] border border-blue-300 rounded-xl w-[150px] hover:w-[200px]  transition-all duration-300 px-4 hover:bg-white py-2">continue with <br/> google</button>
 </div>
 
 
