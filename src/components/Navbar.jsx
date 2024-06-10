@@ -11,7 +11,7 @@ return (
 <header class="bg-[#510F3C] bg-opacity-90 ">
 <nav class="flex justify-between items-center">
 <div class="my-3 mx-5 flex gap-2 cursor-pointer ">
-<a href="/home" target="_self">
+<a href="/" target="_self">
     <img src={Logo2} alt="Logo2" className='w-[250px] h-[100px]'/>
 </a>    
 {/* <p class=" text-center text-white text-2xl font-serif">Sarvaga  Fashions</p> */}
