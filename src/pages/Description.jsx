@@ -1,10 +1,17 @@
 import React from 'react'
-import Onclickcard from '../components/onclickcard/Onclickcard'
+import Productpage from '../components/Productpage/Productpage'
+import Navbar from '../components/Navbar'
 const Description = () => {
   return (
     <div>
-        <Onclickcard></Onclickcard>
+      <div>
+        <Navbar></Navbar>
+      </div>
+      <div  className='max-w-7xl mx-auto p-8'>
+        <Productpage></Productpage>
     </div>
+    </div>
+    
   )
 }
 
