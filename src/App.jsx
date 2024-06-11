@@ -9,20 +9,8 @@ import Designers from './pages/Designers'
 import Newarrivals from './pages/Newarrivals'
 import Home from './pages/Home'
 import Description from './pages/Description'
-function navigate(url){
-  window.location.href=url;
-}
-async function auth(){
-  const response = await fetch("http://localhost:5172/user", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include' // Include credentials in request
-    });
-  const data = await response.json();
-  navigate(data.url);
-}
+
+
 const App = () => {
   React.useEffect(()=>{
     AOS.init({
