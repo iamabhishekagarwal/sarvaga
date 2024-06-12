@@ -2,6 +2,7 @@ import React from 'react'
 import Productpage from '../components/Productpage/Productpage'
 import Navbar from '../components/Navbar'
 const Description = () => {
+
   return (
     <div>
       <div>

@@ -9,8 +9,7 @@ import Designers from './pages/Designers'
 import Newarrivals from './pages/Newarrivals'
 import Home from './pages/Home'
 import Description from './pages/Description'
-
-
+import { useAuth0 } from "@auth0/auth0-react";
 const App = () => {
   React.useEffect(()=>{
     AOS.init({
@@ -21,22 +20,21 @@ const App = () => {
     });
     AOS.refresh();
   },[]);
+  const {isAuthenticated} =  useAuth0();
   return (
     <div>
       <BrowserRouter>
-        <Routes>
-          
+        <Routes>          
           <Route path='/' element={<Home></Home>}></Route>
           {/* <Route path='/signin' element={<Signin></Signin>}></Route>
           <Route path='/signup' element={<Signup></Signup>}></Route> */}
-          <Route path='/sale' element={<Home></Home>}></Route>
-          <Route path='/sarees' element={<Sarees></Sarees>}></Route>
-          <Route path='/salwaar-suits' element={<SalwaarSuits></SalwaarSuits>}></Route>
-          <Route path='/lehangas' element={<Lehangas></Lehangas>}></Route>
-          <Route path='/designers' element={<Designers></Designers>}></Route>
-          <Route path='/newArrivals' element={<Newarrivals></Newarrivals>}></Route>
-          <Route path='/description' element={<Description></Description>}></Route>
-          
+          <Route path='/sale' element={<Home Authenticated={isAuthenticated}></Home>}></Route>
+          <Route path='/sarees' element={<Sarees Authenticated={isAuthenticated}></Sarees>}></Route>
+          <Route path='/salwaar-suits' element={<SalwaarSuits Authenticated={isAuthenticated}></SalwaarSuits>}></Route>
+          <Route path='/lehangas' element={<Lehangas Authenticated={isAuthenticated}></Lehangas>}></Route>
+          <Route path='/designers' element={<Designers Authenticated={isAuthenticated}></Designers>}></Route>
+          <Route path='/newArrivals' element={<Newarrivals Authenticated={isAuthenticated}></Newarrivals>}></Route>
+          <Route path='/description' element={<Description Authenticated={isAuthenticated}></Description>}></Route>         
         </Routes>
       </BrowserRouter>
     </div>
