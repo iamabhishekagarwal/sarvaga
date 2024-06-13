@@ -5,7 +5,7 @@ import Products from '../components/Products/Products';
 import Trending from '../components/TopProducts/Trending';
 import Banner from '../components/Banner/Banner';
 import Testimonial from '../components/Testimonial/Testimonial';
-export default function Home() {
+export default function Home({Authenticated}) {
   return (
     <>
       

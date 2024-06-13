@@ -3,8 +3,6 @@ import Logo2 from '../assets/logo2.png';
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 import { useAuth0 } from "@auth0/auth0-react";
-
-
 const Navbar = () => {
     const { loginWithRedirect } = useAuth0();
     const {user, logout,isAuthenticated } = useAuth0();
