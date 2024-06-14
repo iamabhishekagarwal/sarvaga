@@ -67,7 +67,7 @@ const Hero = () => {
                                         data-aos-duration="500"
                                         data-aos-delay="300"
                                         className='bg-gradient-to-r from-yellow-400 to-yellow-600 hover:scale-105 transition-transform duration-200 text-gray-900 py-3 px-8 rounded-full shadow-lg font-semibold'>
-                                        Order Now
+                                        order now
                                     </button>
 
                                     </div>
