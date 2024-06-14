@@ -40,7 +40,7 @@ const Hero = () => {
     };
 
     return (
-        <div className='relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gradient-to-b from-purple-600 to-purple-900 flex justify-center items-center'>
+        <div className='relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gradient-to-b from-purple-100 to-purple-300 flex justify-center items-center'>
             <div className='container mx-auto px-4'>
                 <Slider {...settings}>
                     {ImageList.map((data) => (
@@ -51,24 +51,25 @@ const Hero = () => {
                                         data-aos="zoom-out"
                                         data-aos-once="true"
                                         data-aos-duration="500"
-                                        className='text-4xl sm:text-5xl lg:text-6xl font-bold text-white'>
+                                        className='text-4xl sm:text-5xl lg:text-6xl font-bold text-purple-800'>
                                         {data.title}
                                     </h1>
                                     <p
                                         data-aos="fade-up"
                                         data-aos-duration="500"
                                         data-aos-delay="100"
-                                        className='text-md sm:text-lg text-gray-200'>
+                                        className='text-md sm:text-lg text-gray-800'>
                                         {data.description}
                                     </p>
-                                    <div>
-                                        <button
-                                            data-aos="fade-up"
-                                            data-aos-duration="500"
-                                            data-aos-delay="300"
-                                            className='bg-gradient-to-r from-yellow-400 to-yellow-600 hover:scale-105 transition-transform duration-200 text-gray-900 py-3 px-8 rounded-full shadow-lg font-semibold'>
-                                            Order Now
-                                        </button>
+                                    <div className='mt-4'>
+                                    <button
+                                        data-aos="fade-up"
+                                        data-aos-duration="500"
+                                        data-aos-delay="300"
+                                        className='bg-gradient-to-r from-yellow-400 to-yellow-600 hover:scale-105 transition-transform duration-200 text-gray-900 py-3 px-8 rounded-full shadow-lg font-semibold'>
+                                        Order Now
+                                    </button>
+
                                     </div>
                                 </div>
                                 <div className='order-1 sm:order-2 flex justify-center items-center'>
