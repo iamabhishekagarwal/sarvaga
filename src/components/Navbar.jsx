@@ -10,7 +10,7 @@ const Navbar = () => {
 
     return (
         <div className="shadow-lg">
-            <header className="bg-gradient-to-r from-purple-600 to-purple-800 text-white">
+            <header className="bg-[#290133] text-white">
                 <nav className="container mx-auto p-4 flex justify-between items-center">
                     <div className="flex items-center gap-4">
                         <a href="/" target="_self">
@@ -26,7 +26,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className="flex items-center gap-6">
-                        <button className='bg-purple-500 hover:bg-purple-700 transition-all duration-200 text-white py-2 px-6 rounded-full flex items-center gap-2'>
+                        <button className='bg-[#4D135C] hover:bg-[#7E408D] transition-all duration-200 text-white py-2 px-6 rounded-full flex items-center gap-2'>
                             <FaCartShopping className="text-xl" />
                             <span className="hidden md:inline">Cart</span>
                         </button>
@@ -50,15 +50,15 @@ const Navbar = () => {
                     </div>
                 </nav>
             </header>
-            <div className="bg-purple-200">
+            <div className="bg-[#1B0022]">
                 <div className="container mx-auto">
                     <ul className="flex justify-center items-center gap-8 py-4">
-                        <li><a href="/sale" target="_self" className="font-semibold text-purple-800 hover:text-purple-500">Sale</a></li>
-                        <li><a href="/sarees" target="_self" className="font-semibold text-purple-800 hover:text-purple-500">Sarees</a></li>
-                        <li><a href="/salwaar-suits" target="_self" className="font-semibold text-purple-800 hover:text-purple-500">Salwaar Suits</a></li>
-                        <li><a href="/lehangas" target="_self" className="font-semibold text-purple-800 hover:text-purple-500">Lehangas</a></li>
-                        <li><a href="/designers" target="_self" className="font-semibold text-purple-800 hover:text-purple-500">Designers</a></li>
-                        <li><a href="/newArrivals" target="_self" className="font-semibold text-purple-800 hover:text-purple-500">New Arrivals</a></li>
+                        <li><a href="/sale" target="_self" className="font-semibold text-white hover:text-purple-500">Sale</a></li>
+                        <li><a href="/sarees" target="_self" className="font-semibold text-white hover:text-purple-500">Sarees</a></li>
+                        <li><a href="/salwaar-suits" target="_self" className="font-semibold text-white hover:text-purple-500">Salwaar Suits</a></li>
+                        <li><a href="/lehangas" target="_self" className="font-semibold text-white hover:text-purple-500">Lehangas</a></li>
+                        <li><a href="/designers" target="_self" className="font-semibold text-white hover:text-purple-500">Designers</a></li>
+                        <li><a href="/newArrivals" target="_self" className="font-semibold text-white hover:text-purple-500">New Arrivals</a></li>
                     </ul>
                 </div>
             </div>
