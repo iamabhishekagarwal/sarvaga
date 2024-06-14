@@ -1,5 +1,5 @@
 import React from 'react';
-import image1 from "C:/Users/iamab/sarvaga/src/assets/sarees/product 1/_DSC1394-2.JPG";
+import image1 from "/home/aditya/CODE/sarvaga/src/assets/sarees/product 3/_DSC1416-2.JPG";
 import image2 from "../../assets/image2.jpeg";
 import image3 from "../../assets/image3.jpeg";
 import Slider from "react-slick";
@@ -40,7 +40,7 @@ const Hero = () => {
     };
 
     return (
-        <div className='relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gradient-to-b from-purple-100 to-purple-300 flex justify-center items-center'>
+        <div className='relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gradient-to-b from-[#BC7FCD] to-[#FFCDEA] flex justify-center items-center'>
             <div className='container mx-auto px-4'>
                 <Slider {...settings}>
                     {ImageList.map((data) => (
@@ -51,7 +51,7 @@ const Hero = () => {
                                         data-aos="zoom-out"
                                         data-aos-once="true"
                                         data-aos-duration="500"
-                                        className='text-4xl sm:text-5xl lg:text-6xl font-bold text-purple-800'>
+                                        className='text-4xl sm:text-5xl lg:text-6xl font-bold text-[#86469C]'>
                                         {data.title}
                                     </h1>
                                     <p
