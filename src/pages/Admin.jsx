@@ -1,36 +1,79 @@
-import React, { useState } from 'react';
+// Admin.js
+import React, { useState, useCallback } from 'react';
 import Modal from 'react-modal';
 import { useDropzone } from 'react-dropzone';
+import Card from '../components/Cards/CardAdmin';
 
 const Admin = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const [filePreviews, setFilePreviews] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [editProduct, setEditProduct] = useState(null);
 
-  const openModal = () => {
+  const openModal = (product = null) => {
+    setSelectedFiles([]);
+    setFilePreviews([]);
+    setEditProduct(product !== null ? products[product] : null);
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
     setSelectedFiles([]);
+    filePreviews.forEach(url => URL.revokeObjectURL(url));
+    setFilePreviews([]);
   };
 
-  const handleDrop = (acceptedFiles) => {
-    // Filter out duplicate files
+  const handleDrop = useCallback((acceptedFiles) => {
     const uniqueFiles = acceptedFiles.filter(
       (file) => !selectedFiles.some((selectedFile) => selectedFile.name === file.name)
     );
-    setSelectedFiles([...selectedFiles, ...uniqueFiles]);
-  };
+
+    const newPreviews = uniqueFiles.map(file => URL.createObjectURL(file));
+    setSelectedFiles(prevFiles => [...prevFiles, ...uniqueFiles]);
+    setFilePreviews(prevPreviews => [...prevPreviews, ...newPreviews]);
+  }, [selectedFiles, filePreviews]);
 
   const handleDelete = (index) => {
-    const updatedFiles = selectedFiles.filter((_, i) => i !== index);
-    setSelectedFiles(updatedFiles);
+    const updatedProducts = products.filter((_, i) => i !== index);
+    setProducts(updatedProducts);
   };
 
-  const handleSubmit = (e) => {
+  const handleEditSubmit = (e) => {
     e.preventDefault();
-    // Handle file upload logic here
+    const productDetails = {
+      specialCategory: null,
+      category: null,
+      productName: e.target.productName.value,
+      description: e.target.description.value,
+      fabric: e.target.fabric.value,
+      color: e.target.color.value,
+      price: parseFloat(e.target.price.value),
+      images: selectedFiles.length ? selectedFiles.map(file => URL.createObjectURL(file)) : editProduct.images
+    };
+
+    const updatedProducts = products.map((product, index) => 
+      index === products.indexOf(editProduct) ? productDetails : product
+    );
+    setProducts(updatedProducts);
+    closeModal();
+  };
+
+  const handleAddSubmit = (e) => {
+    e.preventDefault();
+    const productDetails = {
+      specialCategory: null,
+      category: null,
+      productName: null,
+      description: null,
+      fabric: null,
+      color: null,
+      price: null,
+      images: selectedFiles.map(file => URL.createObjectURL(file))
+    };
+
+    setProducts([...products, productDetails]);
     closeModal();
   };
 
@@ -45,74 +88,89 @@ const Admin = () => {
       <h1 className="text-2xl font-bold mb-4">Admin Page</h1>
       <button
         className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
-        onClick={openModal}
+        onClick={() => openModal()}
       >
         Add Images
       </button>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <div className="relative aspect-w-1 aspect-h-1">
-          <img src="https://via.placeholder.com/200" alt="product" className="w-full h-full object-cover" />
-          <div className="absolute top-2 right-2 space-x-2">
-            <button
-              className="bg-yellow-500 text-white px-2 py-1 rounded"
-              onClick={openModal}
-            >
-              Edit
-            </button>
-            <button
-              className="bg-red-500 text-white px-2 py-1 rounded"
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-        {/* Add more placeholder images as needed */}
+        {products.map((product, index) => (
+          <Card 
+            key={index}
+            product={product}
+            onEdit={() => openModal(index)}
+            onDelete={() => handleDelete(index)}
+          />
+        ))}
       </div>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <div className="p-4">
-          <h2 className="text-xl font-bold mb-4">
-            Add Images
-          </h2>
-          <form onSubmit={handleSubmit}>
-            <div
-              {...getRootProps()}
-              className={`border-4 border-dashed p-20 mb-4 text-center ${isDragActive ? 'border-green-500' : 'border-gray-300'} rounded-lg`}
-            >
-              <input {...getInputProps()} />
-              {isDragActive ? (
-                <p className="text-lg font-semibold text-green-500">Drop the files here ...</p>
-              ) : (
-                <p className="text-lg font-semibold text-gray-500">Drag 'n' drop some images here, or click to select images</p>
-              )}
-            </div>
-            {selectedFiles.length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
-                {selectedFiles.map((file, index) => (
-                  <div key={index} className="relative border border-gray-300 rounded-lg overflow-hidden">
-                    <img
-                      src={URL.createObjectURL(file)}
-                      alt="Selected"
-                      className="w-full h-full object-cover"
-                    />
-                    <button
-                      type="button"
-                      className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded"
-                      onClick={() => handleDelete(index)}
-                    >
-                      Delete
-                    </button>
-                    <p className="text-center text-sm mt-2">{file.name}</p>
+          {editProduct === null ? (
+            <>
+              <h2 className="text-xl font-bold mb-4">Add Images</h2>
+              <form onSubmit={handleAddSubmit}>
+                <div
+                  {...getRootProps()}
+                  className={`border-4 border-dashed p-20 mb-4 text-center ${isDragActive ? 'border-green-500' : 'border-gray-300'} rounded-lg`}
+                >
+                  <input {...getInputProps()} />
+                  {isDragActive ? (
+                    <p className="text-lg font-semibold text-green-500">Drop the files here ...</p>
+                  ) : (
+                    <p className="text-lg font-semibold text-gray-500">Drag 'n' drop some images here, or click to select images</p>
+                  )}
+                </div>
+                {selectedFiles.length > 0 && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+                    {selectedFiles.map((file, index) => (
+                      <div key={index} className="relative border border-gray-300 rounded-lg overflow-hidden">
+                        <img
+                          src={URL.createObjectURL(file)}
+                          alt="Selected"
+                          className="w-full h-full object-contain"
+                        />
+                        <button
+                          type="button"
+                          className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded"
+                          onClick={() => handleDelete(index)}
+                        >
+                          Delete
+                        </button>
+                        <p className="text-center text-sm mt-2">{file.name}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            )}
-            <button
-              type="submit"
-              className="bg-green-500 text-white px-4 py-2 rounded"
-            >
-              Save
-            </button>
-          </form>
+                )}
+                <button
+                  type="submit"
+                  className="bg-green-500 text-white px-4 py-2 rounded"
+                >
+                  Save
+                </button>
+              </form>
+            </>
+          ) : (
+            <>
+              <h2 className="text-xl font-bold mb-4">Edit Product</h2>
+              <form onSubmit={handleEditSubmit}>
+                {editProduct.images && editProduct.images.length > 0 && (
+                  <div className="mb-4">
+                    <img src={editProduct.images[0]} alt="product" className="w-full h-full object-contain" />
+                  </div>
+                )}
+                <input type="text" name="productName" placeholder="Product Name" defaultValue={editProduct.productName} className="mb-4 p-2 border border-gray-300 rounded w-full"/>
+                <textarea name="description" placeholder="Description" defaultValue={editProduct.description} className="mb-4 p-2 border border-gray-300 rounded w-full"/>
+                <input type="text" name="fabric" placeholder="Fabric" defaultValue={editProduct.fabric} className="mb-4 p-2 border border-gray-300 rounded w-full"/>
+                <input type="text" name="color" placeholder="Color" defaultValue={editProduct.color} className="mb-4 p-2 border border-gray-300 rounded w-full"/>
+                <input type="number" step="0.01" name="price" placeholder="Price" defaultValue={editProduct.price} className="mb-4 p-2 border border-gray-300 rounded w-full"/>
+                <button
+                  type="submit"
+                  className="bg-green-500 text-white px-4 py-2 rounded"
+                >
+                  Save
+                </button>
+              </form>
+            </>
+          )}
         </div>
       </Modal>
     </div>
