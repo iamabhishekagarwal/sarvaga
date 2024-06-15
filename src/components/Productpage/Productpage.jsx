@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Productpage = () => {
+const Productpage = ({productId}) => {
 
     const [images,setImages]=useState({
         img1:"",
@@ -10,9 +10,24 @@ const Productpage = () => {
     })
 
     const [activeImg,setActiveImage]=useState(images.img1)
-
+    const [product,setProduct] = useState({});
     const[amount,setAmount]=useState(1)
-
+    useEffect(() => {
+      fetchProductById();
+    }, [productId]);
+  
+    async function fetchProductById() {
+      try {
+        const response = await fetch(`http://localhost:5172/user/products/${productId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch product');
+        }
+        const data = await response.json();
+        setProduct(data);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+      }
+    }
 
 
 

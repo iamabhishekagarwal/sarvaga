@@ -10,6 +10,7 @@ import Newarrivals from './pages/Newarrivals'
 import Home from './pages/Home'
 import Description from './pages/Description'
 import { useAuth0 } from "@auth0/auth0-react";
+import Admin from './pages/Admin';
 const App = () => {
   React.useEffect(()=>{
     AOS.init({
@@ -26,6 +27,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>          
           <Route path='/' element={<Home></Home>}></Route>
+          <Route path='/admin' element={<Admin></Admin>}></Route>
           {/* <Route path='/signin' element={<Signin></Signin>}></Route>
           <Route path='/signup' element={<Signup></Signup>}></Route> */}
           <Route path='/sale' element={<Home Authenticated={isAuthenticated}></Home>}></Route>
@@ -34,8 +36,8 @@ const App = () => {
           <Route path='/lehangas' element={<Lehangas Authenticated={isAuthenticated}></Lehangas>}></Route>
           <Route path='/designers' element={<Designers Authenticated={isAuthenticated}></Designers>}></Route>
           <Route path='/newArrivals' element={<Newarrivals Authenticated={isAuthenticated}></Newarrivals>}></Route>
-          <Route path='/description' element={<Description Authenticated={isAuthenticated}></Description>}></Route>         
-        </Routes>
+          <Route path='/description/:id' element={<Description Authenticated={isAuthenticated}></Description>}></Route>
+          </Routes>
       </BrowserRouter>
     </div>
   )

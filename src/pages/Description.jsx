@@ -1,19 +1,21 @@
-import React from 'react'
-import Productpage from '../components/Productpage/Productpage'
-import Navbar from '../components/Navbar'
-const Description = () => {
+import React from 'react';
+import Productpage from '../components/Productpage/Productpage';
+import Navbar from '../components/Navbar';
+import { useParams } from 'react-router-dom';
 
+const Description = () => {
+  const { productId } = useParams();
+
+  // Use productId as needed, such as fetching product details based on this ID
+  
   return (
     <div>
-      <div>
-        <Navbar></Navbar>
+      <Navbar />
+      <div className='max-w-7xl mx-auto p-8'>
+        <Productpage productId={productId} />
       </div>
-      <div  className='max-w-7xl mx-auto p-8'>
-        <Productpage></Productpage>
     </div>
-    </div>
-    
-  )
-}
+  );
+};
 
-export default Description
+export default Description;

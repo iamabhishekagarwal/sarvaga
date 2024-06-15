@@ -59,6 +59,7 @@ const Navbar = () => {
                         <li><a href="/lehangas" target="_self" className="font-semibold text-white hover:text-purple-500">Lehangas</a></li>
                         <li><a href="/designers" target="_self" className="font-semibold text-white hover:text-purple-500">Designers</a></li>
                         <li><a href="/newArrivals" target="_self" className="font-semibold text-white hover:text-purple-500">New Arrivals</a></li>
+                        <li><a href="/admin" target="_self" className="font-semibold text-red-500 hover:text-purple-500">Admin</a></li>
                     </ul>
                 </div>
             </div>
