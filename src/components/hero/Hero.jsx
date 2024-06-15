@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import image1 from 'C:/Users/iamab/sarvaga/src/assets/sarees/product 1/p11.jpg';
+import image1 from '/home/aditya/CODE/Abhishek/sarvaga/src/assets/sarees/product 2/_DSC1403-1.JPG';
 import image2 from '../../assets/image2.jpeg';
 import image3 from '../../assets/image3.jpeg';
 
