@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo2 from '../assets/logo2.png';
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
@@ -8,8 +8,18 @@ const Navbar = () => {
     const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
     console.log("Current user", user);
 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsDropdownOpen(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsDropdownOpen(false);
+    };
+
     return (
-        <div className="shadow-lg">
+        <div className="shadow-lg z-50 relative">
             <header className="bg-[#290133] text-white">
                 <nav className="container mx-auto p-4 flex justify-between items-center">
                     <div className="flex items-center gap-4">
@@ -50,7 +60,7 @@ const Navbar = () => {
                     </div>
                 </nav>
             </header>
-            <div className="bg-[#1B0022]">
+            <div className="bg-[#1B0022] relative z-50">
                 <div className="container mx-auto">
                     <ul className="flex justify-center items-center gap-8 py-4">
                         <li><a href="/sale" target="_self" className="font-semibold text-white hover:text-purple-500">Sale</a></li>
@@ -59,7 +69,21 @@ const Navbar = () => {
                         <li><a href="/lehangas" target="_self" className="font-semibold text-white hover:text-purple-500">Lehangas</a></li>
                         <li><a href="/designers" target="_self" className="font-semibold text-white hover:text-purple-500">Designers</a></li>
                         <li><a href="/newArrivals" target="_self" className="font-semibold text-white hover:text-purple-500">New Arrivals</a></li>
-                        <li><a href="/admin" target="_self" className="font-semibold text-red-500 hover:text-purple-500">Admin</a></li>
+                        <li
+                            className="relative group"
+                        >
+                            <a href="/admin" target="_self" className="font-semibold text-red-500 hover:text-purple-500">Admin</a>
+                            <div className="relative">
+                                <ul
+                                    className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                >
+                                    <li><a href="/edit-items" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Edit Items</a></li>
+                                    <li><a href="/inventory" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Inventory</a></li>
+                                    <li><a href="/orders" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Orders</a></li>
+                                    <li><a href="/customer-feedback" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Customer Feedbacks/Complaints</a></li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
