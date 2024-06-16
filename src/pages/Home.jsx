@@ -7,7 +7,7 @@ import Banner from '../components/Banner/Banner';
 import Testimonial from '../components/Testimonial/Testimonial';
 export default function Home({Authenticated}) {
   return (
-    <>
+    <div className='bg-gray-100'>
       
       <Navbar />
       <Hero />
@@ -15,6 +15,6 @@ export default function Home({Authenticated}) {
       <Trending />
       <Banner />
       <Testimonial />
-    </>
+    </div>
   );
 }
