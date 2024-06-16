@@ -1,4 +1,3 @@
-// Admin.js
 import React, { useState, useCallback } from 'react';
 import Modal from 'react-modal';
 import { useDropzone } from 'react-dropzone';
@@ -36,6 +35,13 @@ const Admin = () => {
   }, [selectedFiles, filePreviews]);
 
   const handleDelete = (index) => {
+    const updatedFiles = selectedFiles.filter((_, i) => i !== index);
+    const updatedPreviews = filePreviews.filter((_, i) => i !== index);
+    setSelectedFiles(updatedFiles);
+    setFilePreviews(updatedPreviews);
+  };
+
+  const handleDeleteProduct = (index) => {
     const updatedProducts = products.filter((_, i) => i !== index);
     setProducts(updatedProducts);
   };
@@ -43,8 +49,7 @@ const Admin = () => {
   const handleEditSubmit = (e) => {
     e.preventDefault();
     const productDetails = {
-      specialCategory: null,
-      category: null,
+      ...editProduct,
       productName: e.target.productName.value,
       description: e.target.description.value,
       fabric: e.target.fabric.value,
@@ -65,11 +70,11 @@ const Admin = () => {
     const productDetails = {
       specialCategory: null,
       category: null,
-      productName: null,
-      description: null,
-      fabric: null,
-      color: null,
-      price: null,
+      productName: '',
+      description: '',
+      fabric: '',
+      color: '',
+      price: 0,
       images: selectedFiles.map(file => URL.createObjectURL(file))
     };
 
@@ -90,7 +95,7 @@ const Admin = () => {
         className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
         onClick={() => openModal()}
       >
-        Add Images
+        Add Product
       </button>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product, index) => (
@@ -98,7 +103,7 @@ const Admin = () => {
             key={index}
             product={product}
             onEdit={() => openModal(index)}
-            onDelete={() => handleDelete(index)}
+            onDelete={() => handleDeleteProduct(index)}
           />
         ))}
       </div>
@@ -106,7 +111,7 @@ const Admin = () => {
         <div className="p-4">
           {editProduct === null ? (
             <>
-              <h2 className="text-xl font-bold mb-4">Add Images</h2>
+              <h2 className="text-xl font-bold mb-4">Add Product</h2>
               <form onSubmit={handleAddSubmit}>
                 <div
                   {...getRootProps()}
@@ -119,14 +124,14 @@ const Admin = () => {
                     <p className="text-lg font-semibold text-gray-500">Drag 'n' drop some images here, or click to select images</p>
                   )}
                 </div>
-                {selectedFiles.length > 0 && (
+                {filePreviews.length > 0 && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
-                    {selectedFiles.map((file, index) => (
+                    {filePreviews.map((preview, index) => (
                       <div key={index} className="relative border border-gray-300 rounded-lg overflow-hidden">
                         <img
-                          src={URL.createObjectURL(file)}
+                          src={preview}
                           alt="Selected"
-                          className="w-full h-full object-contain"
+                          className="w-full h-32 object-contain"
                         />
                         <button
                           type="button"
@@ -135,7 +140,7 @@ const Admin = () => {
                         >
                           Delete
                         </button>
-                        <p className="text-center text-sm mt-2">{file.name}</p>
+                        <p className="text-center text-sm mt-2">{selectedFiles[index].name}</p>
                       </div>
                     ))}
                   </div>
@@ -153,15 +158,23 @@ const Admin = () => {
               <h2 className="text-xl font-bold mb-4">Edit Product</h2>
               <form onSubmit={handleEditSubmit}>
                 {editProduct.images && editProduct.images.length > 0 && (
-                  <div className="mb-4">
-                    <img src={editProduct.images[0]} alt="product" className="w-full h-full object-contain" />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+                    {editProduct.images.map((image, index) => (
+                      <div key={index} className="relative border border-gray-300 rounded-lg overflow-hidden">
+                        <img
+                          src={image}
+                          alt="Product"
+                          className="w-full h-32 object-contain"
+                        />
+                      </div>
+                    ))}
                   </div>
                 )}
-                <input type="text" name="productName" placeholder="Product Name" defaultValue={editProduct.productName} className="mb-4 p-2 border border-gray-300 rounded w-full"/>
-                <textarea name="description" placeholder="Description" defaultValue={editProduct.description} className="mb-4 p-2 border border-gray-300 rounded w-full"/>
-                <input type="text" name="fabric" placeholder="Fabric" defaultValue={editProduct.fabric} className="mb-4 p-2 border border-gray-300 rounded w-full"/>
-                <input type="text" name="color" placeholder="Color" defaultValue={editProduct.color} className="mb-4 p-2 border border-gray-300 rounded w-full"/>
-                <input type="number" step="0.01" name="price" placeholder="Price" defaultValue={editProduct.price} className="mb-4 p-2 border border-gray-300 rounded w-full"/>
+                <input type="text" name="productName" placeholder="Product Name" defaultValue={editProduct.productName} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
+                <textarea name="description" placeholder="Description" defaultValue={editProduct.description} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
+                <input type="text" name="fabric" placeholder="Fabric" defaultValue={editProduct.fabric} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
+                <input type="text" name="color" placeholder="Color" defaultValue={editProduct.color} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
+                <input type="number" step="0.01" name="price" placeholder="Price" defaultValue={editProduct.price} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
                 <button
                   type="submit"
                   className="bg-green-500 text-white px-4 py-2 rounded"

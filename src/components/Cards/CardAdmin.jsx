@@ -7,8 +7,12 @@ const Card = ({ product, onEdit, onDelete }) => {
       <div className="flex flex-col h-full">
         <div className="flex-shrink-0">
           {product.images && product.images.length > 0 && (
-            <div className="aspect-w-17 aspect-h-17">
-              <img src={product.images[0]} alt="product" className="object-cover w-full h-full" />
+            <div className="grid grid-cols-2 gap-2">
+              {product.images.map((image, index) => (
+                <div key={index} className="aspect-w-17 aspect-h-17">
+                  <img src={image} alt={`product-${index}`} className="object-cover w-full h-full" />
+                </div>
+              ))}
             </div>
           )}
         </div>
@@ -20,7 +24,7 @@ const Card = ({ product, onEdit, onDelete }) => {
               <p className="text-sm text-gray-700"><strong>Fabric:</strong> {product.fabric !== null ? product.fabric : 'No Fabric'}</p>
               <p className="text-sm text-gray-700"><strong>Color:</strong> {product.color !== null ? product.color : 'No Color'}</p>
             </div>
-            <p className="text-lg font-bold text-green-700">{product.price !== null ? `$${product.price.toFixed(2)}` : 'Price not available'}</p>
+            <p className="text-lg font-bold text-green-700">{product.price !== null ? `₹${product.price.toFixed(2)}` : 'Price not available'}</p>
           </div>
           <div className="flex justify-between mt-4">
             <button
