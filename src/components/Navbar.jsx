@@ -3,25 +3,37 @@ import Logo2 from "../assets/logo2.png";
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 
 const Navbar = () => {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
   async function checkAdminStatus() {
-    const { res } = await fetch("http://localhost:5172/admin/signin", {
-      method: "post",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        username: user.given_name,
-        email: user.email,
-        name: user.name,
-      }),
-    });
-    if (res.isAdmin) {
-      setIsAdmin(true);
+    try {
+      const response = await axios.post(
+        "http://localhost:5172/admin/signin",
+        {
+          username: user.given_name || "",
+          email: user.email,
+          name: user.name || "",
+        },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Allow-Methods": "*",
+            "Content-Type": "application/json",
+          },
+          withCredentials: true, // This ensures credentials are included (like 'credentials: "include"' in fetch)
+        }
+      );
+
+      console.log(response.data); // Log the entire response object or response data for debugging
+
+      if (response.data.isAdmin) {
+        setIsAdmin(true); // Assuming setIsAdmin is a state setter function
+      }
+    } catch (error) {
+      console.error("Error fetching admin status:", error);
     }
   }
   useEffect(() => {
