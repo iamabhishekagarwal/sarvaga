@@ -28,8 +28,8 @@ const Navbar = () => {
       );
 
       console.log(response.data); // Log the entire response object or response data for debugging
-
-      if (response.data.isAdmin) {
+      const admin = response.data.res.isAdmin;
+      if (admin) {
         setIsAdmin(true); // Assuming setIsAdmin is a state setter function
       }
     } catch (error) {
