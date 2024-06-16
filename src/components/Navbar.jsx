@@ -77,10 +77,10 @@ const Navbar = () => {
                                 <ul
                                     className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                 >
-                                    <li><a href="/edit-items" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Edit Items</a></li>
-                                    <li><a href="/inventory" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Inventory</a></li>
-                                    <li><a href="/orders" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Orders</a></li>
-                                    <li><a href="/customer-feedback" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Customer Feedbacks/Complaints</a></li>
+                                    <li><a href="/admin/editItems" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Edit Items</a></li>
+                                    <li><a href="/admin/inventory" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Inventory</a></li>
+                                    <li><a href="/admin/orders" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Orders</a></li>
+                                    <li><a href="/admin/feedback" target="_self" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Customer Feedbacks/Complaints</a></li>
                                 </ul>
                             </div>
                         </li>

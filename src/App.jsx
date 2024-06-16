@@ -10,8 +10,11 @@ import Newarrivals from './pages/Newarrivals'
 import Home from './pages/Home'
 import Description from './pages/Description'
 import { useAuth0 } from "@auth0/auth0-react";
-import Admin from './pages/Admin';
 import CartPage from './pages/Cart';
+import AdminItems from './pages/AdminItems';
+import AdminInventory from './pages/AdminInventory';
+import AdminOrders from './pages/AdminOrders';
+import AdminFeedback from './pages/AdminFeedback';
 const App = () => {
   React.useEffect(()=>{
     AOS.init({
@@ -28,9 +31,10 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/admin" element={<Admin></Admin>}></Route>
-          {/* <Route path='/signin' element={<Signin></Signin>}></Route>
-          <Route path='/signup' element={<Signup></Signup>}></Route> */}
+          <Route path="/admin/editItems" element={<AdminItems></AdminItems>}></Route>
+          <Route path="/admin/inventory" element={<AdminInventory></AdminInventory>}></Route>
+          <Route path="/admin/orders" element={<AdminOrders></AdminOrders>}></Route>
+          <Route path="/admin/feedback" element={<AdminFeedback></AdminFeedback>}></Route>
           <Route
             path="/sale"
             element={<Home Authenticated={isAuthenticated}></Home>}
