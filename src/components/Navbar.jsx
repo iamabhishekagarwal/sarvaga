@@ -48,16 +48,9 @@ const Navbar = () => {
         <nav className="container mx-auto p-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
             <a href="/" target="_self">
-              <img src={Logo2} alt="Logo2" className="w-32 h-auto" />
+              <img src={Logo2} alt="Logo2" className="w-32 h-auto" />             
             </a>
-            <div className="relative hidden lg:block">
-              <input
-                type="text"
-                placeholder="Search products..."
-                className="py-2 w-64 transition-all duration-300 rounded-full border border-gray-300 px-4 text-start font-semibold focus:outline-none focus:border-purple-500"
-              />
-              <IoMdSearch className="text-gray-500 absolute top-1/2 -translate-y-1/2 right-4" />
-            </div>
+            
           </div>
           <div className="flex items-center gap-6">
             <button className="bg-[#4D135C] hover:bg-[#7E408D] transition-all duration-200 text-white py-2 px-6 rounded-full flex items-center gap-2">

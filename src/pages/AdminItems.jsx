@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { useDropzone } from 'react-dropzone';
 import Card from '../components/Cards/CardAdmin';
 import Navbar from '../components/Navbar';
+import ConfirmDialog from '../components/ConfirmDialog';
 import axios from 'axios';
 
 const AdminItems = () => {
@@ -11,6 +12,8 @@ const AdminItems = () => {
   const [filePreviews, setFilePreviews] = useState([]);
   const [products, setProducts] = useState([]);
   const [editProduct, setEditProduct] = useState(null);
+  const [confirmDialogIsOpen, setConfirmDialogIsOpen] = useState(false);
+  const [productToDelete, setProductToDelete] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -48,7 +51,7 @@ const AdminItems = () => {
     filePreviews.forEach(url => URL.revokeObjectURL(url));
     setFilePreviews([]);
   };
-  useEffect
+
   const handleDrop = useCallback((acceptedFiles) => {
     const uniqueFiles = acceptedFiles.filter(
       (file) => !selectedFiles.some((selectedFile) => selectedFile.name === file.name)
@@ -66,9 +69,22 @@ const AdminItems = () => {
     setFilePreviews(updatedPreviews);
   };
 
-  const handleDeleteProduct = (index) => {
-    const updatedProducts = products.filter((_, i) => i !== index);
-    setProducts(updatedProducts);
+  const openConfirmDialog = (index) => {
+    setProductToDelete(index);
+    setConfirmDialogIsOpen(true);
+  };
+
+  const closeConfirmDialog = () => {
+    setProductToDelete(null);
+    setConfirmDialogIsOpen(false);
+  };
+
+  const handleConfirmDelete = () => {
+    if (productToDelete !== null) {
+      const updatedProducts = products.filter((_, i) => i !== productToDelete);
+      setProducts(updatedProducts);
+    }
+    closeConfirmDialog();
   };
 
   const handleEditSubmit = (e) => {
@@ -130,7 +146,7 @@ const AdminItems = () => {
               key={index}
               product={product}
               onEdit={() => openModal(index)}
-              onDelete={() => handleDeleteProduct(index)}
+              onDelete={() => openConfirmDialog(index)}
             />
           ))}
         </div>
@@ -213,6 +229,12 @@ const AdminItems = () => {
             </>
           )}          </div>
         </Modal>
+        <ConfirmDialog
+          isOpen={confirmDialogIsOpen}
+          onRequestClose={closeConfirmDialog}
+          onConfirm={handleConfirmDelete}
+          message="Are you sure you want to delete this product?"
+        />
       </div>
     </>
   );
