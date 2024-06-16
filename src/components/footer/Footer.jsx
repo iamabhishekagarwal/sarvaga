@@ -33,7 +33,18 @@ const Footer = () => {
                 </div>
             </div>
             <div className="text-center mt-8">
-    <p>For any inquiries, email us at <a href="mailto:sarvagafashions@gmail.com" target='_blank' className="text-purple-500 hover:text-white">sarvagafashions@gmail.com</a></p>
+            <p>
+  For any inquiries, email us at{' '}
+  <a
+    href="mailto:sarvagafashions@gmail.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-purple-500 hover:text-white"
+  >
+    sarvagafashions@gmail.com
+  </a>
+</p>
+
 </div>
 
         </footer>

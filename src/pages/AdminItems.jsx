@@ -2,8 +2,9 @@ import React, { useState, useCallback } from 'react';
 import Modal from 'react-modal';
 import { useDropzone } from 'react-dropzone';
 import Card from '../components/Cards/CardAdmin';
+import Navbar from '../components/Navbar';
 
-const Admin = () => {
+const AdminItems = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [filePreviews, setFilePreviews] = useState([]);
@@ -89,26 +90,28 @@ const Admin = () => {
   });
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Admin Page</h1>
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
-        onClick={() => openModal()}
-      >
-        Add Product
-      </button>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product, index) => (
-          <Card 
-            key={index}
-            product={product}
-            onEdit={() => openModal(index)}
-            onDelete={() => handleDeleteProduct(index)}
-          />
-        ))}
-      </div>
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-        <div className="p-4">
+    <>
+      <Navbar />
+      <div className="p-8 pt-16">
+        <h1 className="text-2xl font-bold mb-4">Admin Page</h1>
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+          onClick={() => openModal()}
+        >
+          Add Product
+        </button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map((product, index) => (
+            <Card 
+              key={index}
+              product={product}
+              onEdit={() => openModal(index)}
+              onDelete={() => handleDeleteProduct(index)}
+            />
+          ))}
+        </div>
+        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+          <div className="p-4">
           {editProduct === null ? (
             <>
               <h2 className="text-xl font-bold mb-4">Add Product</h2>
@@ -184,11 +187,11 @@ const Admin = () => {
                 </button>
               </form>
             </>
-          )}
-        </div>
-      </Modal>
-    </div>
+          )}          </div>
+        </Modal>
+      </div>
+    </>
   );
 };
 
-export default Admin;
+export default AdminItems;

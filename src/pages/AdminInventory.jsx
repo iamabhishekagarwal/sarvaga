@@ -1,8 +1,10 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 function AdminInventory() {
   return (
-    <div>This is Inventory Page</div>
+    <div>
+        <Navbar></Navbar>This is Inventory Page</div>
   )
 }
 

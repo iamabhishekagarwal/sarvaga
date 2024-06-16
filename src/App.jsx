@@ -14,7 +14,6 @@ import CartPage from './pages/Cart';
 import AdminItems from './pages/AdminItems';
 import AdminInventory from './pages/AdminInventory';
 import AdminOrders from './pages/AdminOrders';
-import AdminFeedback from './pages/AdminFeedback';
 import Aboutus from './pages/Aboutus';
 const App = () => {
   React.useEffect(()=>{
@@ -35,7 +34,6 @@ const App = () => {
           <Route path="/admin/editItems" element={<AdminItems></AdminItems>}></Route>
           <Route path="/admin/inventory" element={<AdminInventory></AdminInventory>}></Route>
           <Route path="/admin/orders" element={<AdminOrders></AdminOrders>}></Route>
-          <Route path="/admin/feedback" element={<AdminFeedback></AdminFeedback>}></Route>
           <Route path="/user/aboutus" element={<Aboutus></Aboutus>}></Route>
           <Route
             path="/sale"
