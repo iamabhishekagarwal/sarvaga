@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Modal from 'react-modal';
 import { useDropzone } from 'react-dropzone';
 import Card from '../components/Cards/CardAdmin';
 import Navbar from '../components/Navbar';
+import axios from 'axios';
 
 const AdminItems = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -10,6 +11,29 @@ const AdminItems = () => {
   const [filePreviews, setFilePreviews] = useState([]);
   const [products, setProducts] = useState([]);
   const [editProduct, setEditProduct] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5172/admin/products/all",
+          {
+            headers: {
+              "Access-Control-Allow-Headers": "*",
+              "Access-Control-Allow-Methods": "*",
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        );
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []); 
 
   const openModal = (product = null) => {
     setSelectedFiles([]);
@@ -24,7 +48,7 @@ const AdminItems = () => {
     filePreviews.forEach(url => URL.revokeObjectURL(url));
     setFilePreviews([]);
   };
-
+  useEffect
   const handleDrop = useCallback((acceptedFiles) => {
     const uniqueFiles = acceptedFiles.filter(
       (file) => !selectedFiles.some((selectedFile) => selectedFile.name === file.name)
