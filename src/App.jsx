@@ -15,6 +15,7 @@ import AdminItems from './pages/AdminItems';
 import AdminInventory from './pages/AdminInventory';
 import AdminOrders from './pages/AdminOrders';
 import AdminFeedback from './pages/AdminFeedback';
+import Aboutus from './pages/Aboutus';
 const App = () => {
   React.useEffect(()=>{
     AOS.init({
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/admin/inventory" element={<AdminInventory></AdminInventory>}></Route>
           <Route path="/admin/orders" element={<AdminOrders></AdminOrders>}></Route>
           <Route path="/admin/feedback" element={<AdminFeedback></AdminFeedback>}></Route>
+          <Route path="/user/aboutus" element={<Aboutus></Aboutus>}></Route>
           <Route
             path="/sale"
             element={<Home Authenticated={isAuthenticated}></Home>}
