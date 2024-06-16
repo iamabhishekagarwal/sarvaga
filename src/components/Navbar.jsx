@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo2 from "../assets/logo2.png";
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
@@ -6,18 +6,29 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
-  async function login() {
-    loginWithRedirect();
-    if (isAuthenticated) {
-      const { res } = await fetch("http://localhost:5172/admin/signin");
-      console.log(res);
-      if (res.isAdmin) {
-        setIsAdmin(true);
-      }
-    } else {
-      console.log(isAuthenticated);
+  async function checkAdminStatus() {
+    const { res } = await fetch("http://localhost:5172/admin/signin", {
+      method: "post",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        username: user.given_name,
+        email: user.email,
+        name: user.name,
+      }),
+    });
+    if (res.isAdmin) {
+      setIsAdmin(true);
     }
   }
+  useEffect(() => {
+    if (isAuthenticated) {
+      checkAdminStatus();
+    }
+  }, [isAuthenticated]);
   const [isAdmin, setIsAdmin] = useState(false);
   return (
     <div className="shadow-lg">
@@ -64,9 +75,7 @@ const Navbar = () => {
               </div>
             ) : (
               <button
-                onClick={() => {
-                  login;
-                }}
+                onClick={loginWithRedirect}
                 className="bg-white text-purple-800 py-2 px-4 rounded-full transition-all duration-300 hover:bg-purple-700 hover:text-white"
               >
                 Login
