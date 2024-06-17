@@ -14,6 +14,7 @@ const AdminItems = () => {
   const [editProduct, setEditProduct] = useState(null);
   const [confirmDialogIsOpen, setConfirmDialogIsOpen] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
+  const [category, setCategory] = useState('Saree'); // Default category
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -96,6 +97,7 @@ const AdminItems = () => {
       fabric: e.target.fabric.value,
       color: e.target.color.value,
       price: parseFloat(e.target.price.value),
+      category, // Added category field
       images: selectedFiles.length ? selectedFiles.map(file => URL.createObjectURL(file)) : editProduct.images
     };
 
@@ -110,7 +112,7 @@ const AdminItems = () => {
     e.preventDefault();
     const productDetails = {
       specialCategory: null,
-      category: null,
+      category, // Added category field
       productName: '',
       description: '',
       fabric: '',
@@ -167,6 +169,7 @@ const AdminItems = () => {
                     <p className="text-lg font-semibold text-gray-500">Drag 'n' drop some images here, or click to select images</p>
                   )}
                 </div>
+                
                 {filePreviews.length > 0 && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
                     {filePreviews.map((preview, index) => (
@@ -212,11 +215,31 @@ const AdminItems = () => {
                       </div>
                     ))}
                   </div>
-                )}               
+                )} 
+                <label htmlFor="category" className="block text-gray-700 font-semibold mb-2">Product Name:</label>
                 <input type="text" name="productName" placeholder="Product Name" defaultValue={editProduct.productName} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
+                <div className="mb-4">
+                  <label htmlFor="category" className="block text-gray-700 font-semibold mb-2">Category:</label>
+                  <select
+                    id="category"
+                    name="category"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    className="border border-gray-300 p-2 rounded w-full"
+                  >
+                    <option value="Saree">Saree</option>
+                    <option value="Salwar Suit">Salwar Suit</option>
+                    <option value="Lehenga">Lehenga</option>
+                    <option value="Designer">Designer</option>
+                  </select>
+                </div>
+                <label htmlFor="category" className="block text-gray-700 font-semibold mb-2">Product Description:</label>
                 <textarea name="description" placeholder="Description" defaultValue={editProduct.description} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
+                <label htmlFor="category" className="block text-gray-700 font-semibold mb-2">Fabric:</label>
                 <input type="text" name="fabric" placeholder="Fabric" defaultValue={editProduct.fabric} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
-                <input type="text" name="color" placeholder="Color" defaultValue={editProduct.color} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
+                <label htmlFor="category" className="block text-gray-700 font-semibold mb-2">Color:</label>
+                <input type="text" name="color" placeholder="Color" defaultValue={editProduct.color} className="mb-4 p-2 border border-gray-300 rounded w-full" required />      
+                <label htmlFor="category" className="block text-gray-700 font-semibold mb-2">Price:</label>
                 <input type="number" step="0.01" name="price" placeholder="Price" defaultValue={editProduct.price} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
                 <button
                   type="submit"

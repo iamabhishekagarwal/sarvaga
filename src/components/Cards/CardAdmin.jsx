@@ -24,7 +24,10 @@ const Card = ({ product, onEdit, onDelete }) => {
               <p className="text-sm text-gray-700"><strong>Fabric:</strong> {product.fabric !== null ? product.fabric : 'No Fabric'}</p>
               <p className="text-sm text-gray-700"><strong>Color:</strong> {product.color !== null ? product.color : 'No Color'}</p>
             </div>
-            <p className="text-lg font-bold text-green-700">{product.price !== null ? `₹${product.price.toFixed(2)}` : 'Price not available'}</p>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-sm text-gray-700"><strong>Category:</strong> {product.category !== null ? product.category : 'No Category'}</p>
+              <p className="text-lg font-bold text-green-700">{product.price !== null ? `₹${product.price.toFixed(2)}` : 'Price not available'}</p>
+            </div>
           </div>
           <div className="flex justify-between mt-4">
             <button
