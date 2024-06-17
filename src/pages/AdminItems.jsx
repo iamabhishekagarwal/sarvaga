@@ -190,9 +190,9 @@ const AdminItems = () => {
                 )}
                 <button
                   type="submit"
-                  className="bg-green-500 text-white px-4 py-2 rounded"
+                  className="bg-blue-400 text-white px-4 py-2 rounded"
                 >
-                  Save
+                  Upload
                 </button>
               </form>
             </>
@@ -212,8 +212,7 @@ const AdminItems = () => {
                       </div>
                     ))}
                   </div>
-                )}
-                
+                )}               
                 <input type="text" name="productName" placeholder="Product Name" defaultValue={editProduct.productName} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
                 <textarea name="description" placeholder="Description" defaultValue={editProduct.description} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
                 <input type="text" name="fabric" placeholder="Fabric" defaultValue={editProduct.fabric} className="mb-4 p-2 border border-gray-300 rounded w-full" required />
@@ -232,6 +231,7 @@ const AdminItems = () => {
         <ConfirmDialog
           isOpen={confirmDialogIsOpen}
           onRequestClose={closeConfirmDialog}
+          
           onConfirm={handleConfirmDelete}
           message="Are you sure you want to delete this product?"
         />
