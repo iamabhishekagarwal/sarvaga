@@ -2,9 +2,9 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import image1 from '../../assets/image2.jpeg';
-import image2 from '../../assets/image2.jpeg';
-import image3 from '../../assets/image3.jpeg';
+import image1 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/hero and banner/p1.png';
+import image2 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/hero and banner/hero2.jpg';
+import image3 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/hero and banner/p2.png';
 
 const ImageList = [
   {

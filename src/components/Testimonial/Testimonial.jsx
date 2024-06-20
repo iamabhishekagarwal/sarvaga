@@ -8,23 +8,23 @@ const Testimonials = [
     {
         id: 1,
         img: image1,
-        title: "Upto 50% off on all saree wears",
-        name: "Aditya",
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magni facere molestiae aliquid consequatur?'
+        
+        name: "Simran",
+        description: 'High quality products and nice cloth patterns'
     },
     {
         id: 2,
         img: image2,
-        name: "Aditya",
-        title: "Upto 30% off on all saree wears",
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magni facere molestiae aliquid consequatur?'
+        name: "Ananya",
+        
+        description: 'Best looks and trendy products '
     },
     {
         id: 3,
         img: image3,
-        name: "Aditya",
-        title: "Upto 20% off on all saree wears",
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magni facere molestiae aliquid consequatur?'
+        name: "Sumedha",
+        
+        description: 'nice fitting clothes and good customer support.'
     },
 ];
 
@@ -74,7 +74,7 @@ const Testimonial = () => {
                 <div className="text-center mb-10 max-w-[600px] mx-auto">
                     <p data-aos="fade-up" className='text-purple-900 py-1'>What Our Customers Say</p>
                     <h1 data-aos="fade-up" className="text-2xl sm:text-3xl font-bold text-black">Testimonials</h1>
-                    <p data-aos="fade-up" className='text-sm text-gray-500 mt-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, deleniti natus! Voluptate, enim assumenda?</p>
+                    {/* <p data-aos="fade-up" className='text-sm text-gray-500 mt-2'></p> */}
                 </div>
                 {/* Testimonial Card Section */}
                 <div data-aos="zoom-in">

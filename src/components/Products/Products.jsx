@@ -1,9 +1,9 @@
 import React from 'react';
-import img1 from '../../assets/img1.jpeg';
-import img2 from '../../assets/img2.jpeg';
-import img3 from '../../assets/img3.jpeg';
-import img4 from '../../assets/img4.jpeg';
-import img5 from '../../assets/img5.jpeg';
+import img1 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/product 1/_DSC1395-1.JPG';
+import img2 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/product 2/_DSC1407-1.JPG';
+import img3 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/product 3/_DSC1423-1.JPG';
+import img4 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/product 4/variant 2/_DSC1446.JPG';
+import img5 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/product 5/variant1/_DSC1568-1.JPG';
 import { FaStar } from "react-icons/fa6";
 
 const ProductsData = [

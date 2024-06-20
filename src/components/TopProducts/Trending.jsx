@@ -1,9 +1,9 @@
 import React from 'react';
-import img1 from '../../assets/img1.jpeg';
-import img2 from '../../assets/img2.jpeg';
-import img3 from '../../assets/img3.jpeg';
-import img4 from '../../assets/img4.jpeg';
-import img5 from '../../assets/img5.jpeg';
+import img1 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/product 1/_DSC1394-2.JPG';
+import img2 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/product 2/_DSC1413-1.JPG';
+import img3 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/product 3/_DSC1425-3.JPG';
+import img4 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/product 4/variant 1/_DSC1525-1.JPG';
+import img5 from 'C:/Users/adity/OneDrive/Desktop/sarvaga/src/assets/sarees/product 5/variant3/_DSC1593-1.JPG';
 import { FaStar } from "react-icons/fa6";
 
 const productsData = [
@@ -57,7 +57,7 @@ const Trending = () => {
                 <div className="text-left mx-6 mb-10 max-w-[600px]">
                     {/* <p data-aos="fade-up" className='text-sm text-purple-900 py-1'>Top Rated Products For You</p> */}
                     <h1 data-aos="fade-up" className="text-2xl text-black font-bold">Trending Products</h1>
-                    <p data-aos="fade-up" className='text-sm text-gray-500 mt-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, deleniti natus! Voluptate, enim assumenda?</p>
+                    <p data-aos="fade-up" className='text-sm text-gray-500 mt-1'>Explore The Variety of top selling products for you.</p>
                 </div>
                 {/* Body Section */}
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 place-items-center gap-8'>

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Logo2 from "../assets/logo2.png";
-import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 
 const Navbar = () => {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   async function checkAdminStatus() {
     try {
       const response = await axios.post(
@@ -23,34 +25,34 @@ const Navbar = () => {
             "Access-Control-Allow-Methods": "*",
             "Content-Type": "application/json",
           },
-          withCredentials: true, // This ensures credentials are included (like 'credentials: "include"' in fetch)
+          withCredentials: true,
         }
       );
 
-      console.log(response.data); // Log the entire response object or response data for debugging
+      console.log(response.data);
       const admin = response.data.res.isAdmin;
       if (admin) {
-        setIsAdmin(true); // Assuming setIsAdmin is a state setter function
+        setIsAdmin(true);
       }
     } catch (error) {
       console.error("Error fetching admin status:", error);
     }
   }
+
   useEffect(() => {
     if (isAuthenticated) {
       checkAdminStatus();
     }
   }, [isAuthenticated]);
-  const [isAdmin, setIsAdmin] = useState(false);
+
   return (
     <div className="shadow-lg">
       <header className="bg-[#290133] text-white">
         <nav className="container mx-auto p-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
             <a href="/" target="_self">
-              <img src={Logo2} alt="Logo2" className="w-32 h-auto" />             
+              <img src={Logo2} alt="Logo2" className="w-32 h-auto" />
             </a>
-            
           </div>
           <div className="flex items-center gap-6">
             <button className="bg-[#4D135C] hover:bg-[#7E408D] transition-all duration-200 text-white py-2 px-6 rounded-full flex items-center gap-2">
@@ -87,11 +89,17 @@ const Navbar = () => {
               </button>
             )}
           </div>
+          <button
+            className="block md:hidden text-white"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            ☰
+          </button>
         </nav>
       </header>
-      <div className="bg-[#1B0022]">
+      <div className={`bg-[#1B0022] ${isMenuOpen ? "block" : "hidden"} md:block`}>
         <div className="container mx-auto">
-          <ul className="flex justify-center items-center gap-8 py-4">
+          <ul className="flex flex-col md:flex-row justify-center items-center gap-8 py-4">
             <li>
               <a
                 href="/sale"
@@ -146,23 +154,47 @@ const Navbar = () => {
                 New Arrivals
               </a>
             </li>
-            {isAdmin ? (
-              <li
-              className="relative group"
-          >
-              <a href="/admin/editItems" target="_self" className="font-semibold text-red-500 hover:text-purple-500">Admin</a>
-              <div className=" relative">
-                  <ul
-                      className="bg-[#1B0022] absolute left-0 mt-2 w-48 bg-[#1B0022] shadow-lg rounded-md py-2 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  >
-                      <li><a href="/admin/editItems" target="_self" className="block px-4 py-2 text-white hover:text-purple-500">Edit Items</a></li>
-                      <li><a href="/admin/inventory" target="_self" className=" block px-4 py-2 text-white hover:text-purple-500">Inventory</a></li>
-                      <li><a href="/admin/orders" target="_self" className="block px-4 py-2 text-white hover:text-purple-500">Orders</a></li>
+            {isAdmin && (
+              <li className="relative group">
+                <a
+                  href="/admin"
+                  target="_self"
+                  className="font-semibold text-red-500 hover:text-purple-500"
+                >
+                  Admin
+                </a>
+                <div className="relative">
+                  <ul className="bg-[#1B0022] absolute left-0 mt-2 w-48 shadow-lg rounded-md py-2 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <li>
+                      <a
+                        href="/admin/editItems"
+                        target="_self"
+                        className="block px-4 py-2 text-white hover:text-purple-500"
+                      >
+                        Edit Items
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/admin/inventory"
+                        target="_self"
+                        className="block px-4 py-2 text-white hover:text-purple-500"
+                      >
+                        Inventory
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/admin/orders"
+                        target="_self"
+                        className="block px-4 py-2 text-white hover:text-purple-500"
+                      >
+                        Orders
+                      </a>
+                    </li>
                   </ul>
-              </div>
-          </li>
-            ) : (
-              <></>
+                </div>
+              </li>
             )}
           </ul>
         </div>
